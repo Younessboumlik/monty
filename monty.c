@@ -42,14 +42,17 @@ int main(int argc,char **argv){
                            break;
                         }
                       }
+                      if(i==3){
+                          fprintf(stderr, "L%d: unknown instruction %s\n",nbr_line, token);
+                          exit(EXIT_FAILURE);
+                      }
                         token = strtok(NULL," ");
                         if(token != NULL){
-				if (isNumber(token)== false && strcmp(instr[i].opcode,"push")){
+				if (isNumber(token)== false && strcmp(instr[i].opcode,"push")==0){
                                      fprintf(stderr, "L%d: usage: push integer\n",nbr_line);
 				      exit(EXIT_FAILURE);
 				}
                          n = atoi(token);
-                          /*token = strtok(NULL," ");*/
 			break;
                         }
                          else{
