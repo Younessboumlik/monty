@@ -47,13 +47,12 @@ int main(int argc,char **argv){
                           exit(EXIT_FAILURE);
                       }
                         token = strtok(NULL," ");
-                        if(token != NULL){
+                        if(token != NULL && (strcmp(instr[i].opcode,"push")== 0)){
 				if (isNumber(token)== false && strcmp(instr[i].opcode,"push")==0){
                                      fprintf(stderr, "L%d: usage: push integer\n",nbr_line);
 				      exit(EXIT_FAILURE);
 				}
                          n = atoi(token);
-			break;
                         }
                          else{
 		          if(strcmp(instr[i].opcode,"push")== 0){
@@ -66,7 +65,9 @@ int main(int argc,char **argv){
                    }
                    (instr[i].f)(&stack,n);
 		   nbr_line++;
+		break;
             }
+	       
        }
        fclose(f);
        free(line);
