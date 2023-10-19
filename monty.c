@@ -1,12 +1,64 @@
+#define _GNU_SOURCE
+#include <stdlib.h>
+#include <stddef.h>
+#include <stdio.h>
 #include "monty.h"
+#include <string.h>
+#include <stdbool.h>
+int main(int argc,char **argv){
+        FILE *f;
+        char *token;
+        unsigned int n;
+	int nbr_line=1;
+	char *line = NULL;
+	int i;
+	size_t a=0;
+	stack_t *stack = NULL;
+        instruction_t instr[] = {{"push",&push},{"pall",&pall}};
+        if(argc != 2){
+                fprintf(stderr, "USAGE: monty file.\n");
+                exit(EXIT_FAILURE);
+        }
+       f = fopen(argv[1],"r");
+       if (f == NULL){
+                 fprintf(stderr, "Error: Can't open file %s \n",argv[1]);
+        exit(EXIT_FAILURE);
+       }
+       else {
+             while (getline(&line, &a, f) != -1) {
+		    if(line[strlen(line)-1] == '\n'){
+		     line[strlen(line)-1] = '\0';
+		    }
+                    token = strtok(line," ");
+                    while (token != NULL){
+                       for(i =0;i<2;i++){
+                        if (strcmp(token,instr[i].opcode)==0){
+                           break;
+                        }
+                      }
+                        token = strtok(NULL," ");
+                        if(token != NULL){
+				if (isNumber(token)== false){
+                                     fprintf(stderr, "L%d: usage: push integer\n",nbr_line);
+				      exit(EXIT_FAILURE);
+				}
+                         n = atoi(token);
+                          token = strtok(NULL," ");
+                        }
+                         else{
+		          if(strcmp(instr[i].opcode,"push")== 0){
+                                fprintf(stderr, "L%d: usage: push integer\n",nbr_line);
+                              exit(EXIT_FAILURE);
+			  }
+                            n = 0;
+                         }
 
-int main(int ac, char **av)
-{
-	(void) av;
-	if (ac != 2)
-	{
-		fprintf(stderr, "USAGE: monty file\n");
-		exit(EXIT_FAILURE);
-	}
-	return (0);
-}
+                   }
+                   (instr[i].f)(&stack,n);
+		   nbr_line++;
+            }
+       }
+       fclose(f);
+       free(line);
+       return 0;
+}       
