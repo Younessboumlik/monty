@@ -20,7 +20,7 @@ bool isNumber(const char *str) {
 
 void push(stack_t **stack, unsigned int line_number){
     stack_t *elem;
-    int n = line_number; // You might want to replace this with the actual value to be pushed onto the stack.
+    int n = line_number;
     elem = malloc(sizeof(stack_t));
     
     elem->n = n;
