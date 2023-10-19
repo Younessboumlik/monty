@@ -53,7 +53,7 @@ while(h != NULL){
  * @line_number: line_number
  * Return: no return
 */
-void f_swap(stack_t **stack, unsigned int line_number)
+void swap(stack_t **stack, unsigned int line_number)
 {
 	stack_t *current_node;
 	int stack_length = 0, temp;
