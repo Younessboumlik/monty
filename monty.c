@@ -38,12 +38,12 @@ int main(int argc,char **argv){
                       }
                         token = strtok(NULL," ");
                         if(token != NULL){
-				if (isNumber(token)== false && strcmp(instr[i].opcode,"push"){
+				if (isNumber(token)== false && strcmp(instr[i].opcode,"push")){
                                      fprintf(stderr, "L%d: usage: push integer\n",nbr_line);
 				      exit(EXIT_FAILURE);
 				}
                          n = atoi(token);
-                          //token = strtok(NULL," ");
+                          /*token = strtok(NULL," ");*/
 			break;
                         }
                          else{
