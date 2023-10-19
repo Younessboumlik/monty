@@ -5,12 +5,6 @@
 #include "monty.h"
 #include <string.h>
 #include <stdbool.h>
-
-void nop(stack_t **stack, unsigned int line_number) {
-    (void)stack;
-    (void)line_number;
-}
-
 int main(int argc,char **argv){
         FILE *f;
         char *token;
@@ -20,7 +14,7 @@ int main(int argc,char **argv){
 	int i;
 	size_t a=0;
 	stack_t *stack = NULL;
-        instruction_t instr[] = {{"push",&push},{"pall",&pall},{"nop",&nop}};
+        instruction_t instr[] = {{"push",&push},{"pall",&pall}};
         if(argc != 2){
                 fprintf(stderr, "USAGE: monty file\n");
                 exit(EXIT_FAILURE);
@@ -37,22 +31,19 @@ int main(int argc,char **argv){
 		    }
                     token = strtok(line," ");
                     while (token != NULL){
-                       for(i =0;i<3;i++){
+                       for(i =0;i<2;i++){
                         if (strcmp(token,instr[i].opcode)==0){
                            break;
                         }
                       }
-                      if(i==3){
-                          fprintf(stderr, "L%d: unknown instruction %s\n",nbr_line, token);
-                          exit(EXIT_FAILURE);
-                      }
                         token = strtok(NULL," ");
                         if(token != NULL){
-				if (isNumber(token)== false && strcmp(instr[i].opcode,"push")==0){
+				if (isNumber(token)== false && strcmp(instr[i].opcode,"push")){
                                      fprintf(stderr, "L%d: usage: push integer\n",nbr_line);
 				      exit(EXIT_FAILURE);
 				}
                          n = atoi(token);
+                          /*token = strtok(NULL," ");*/
 			break;
                         }
                          else{
