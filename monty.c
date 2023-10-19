@@ -16,7 +16,7 @@ int main(int argc,char **argv){
 	stack_t *stack = NULL;
         instruction_t instr[] = {{"push",&push},{"pall",&pall}};
         if(argc != 2){
-                fprintf(stderr, "USAGE: monty file.\n");
+                fprintf(stderr, "USAGE: monty file\n");
                 exit(EXIT_FAILURE);
         }
        f = fopen(argv[1],"r");
