@@ -18,16 +18,9 @@ bool isNumber(const char *str) {
     return true;
 }
 
-void push(stack_t **stack, const char *value){
+void push(stack_t **stack, unsigned int line_number){
     stack_t *elem;
-    int n;
-
-    if (!isNumber(value)) {
-        fprintf(stderr, "L%d: usage: push integer\n", globalline_number);
-        exit(EXIT_FAILURE);
-    }
-
-    n = atoi(value);
+    int n = line_number; // You might want to replace this with the actual value to be pushed onto the stack.
     elem = malloc(sizeof(stack_t));
     
     elem->n = n;
