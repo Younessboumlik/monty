@@ -46,6 +46,16 @@ while(h != NULL){
 }
 
 }
+void free_stack(stack_t **stack){
+    stack_t *current_node;
+
+    while (*stack != NULL){
+        current_node = (*stack)->next;
+        free(*stack);
+        *stack = current_node;
+    }
+}
+
 /**
  * f_swap - adds the top two elements of the stack.
  * @stack: stack head
