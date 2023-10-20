@@ -77,7 +77,7 @@ int main(int argc, char **argv)
                         fprintf(stderr, "L%d: usage: push integer\n", nbr_line);
                         exit(EXIT_FAILURE);
                     }
-                    n = nbr_line;
+                    n = 0;
                 }
 
             }
