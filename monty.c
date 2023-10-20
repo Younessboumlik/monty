@@ -20,7 +20,7 @@ int main(int argc,char **argv){
 	int i;
 	size_t a=0;
 	stack_t *stack = NULL;
-        instruction_t instr[] = {{"push",&push},{"pall",&pall},{"nop",&nop}};
+        instruction_t instr[] = {{"push",&push},{"pall",&pall},{"nop",&nop},{"pint",&pint}};
         if(argc != 2){
                 fprintf(stderr, "USAGE: monty file\n");
                 exit(EXIT_FAILURE);
