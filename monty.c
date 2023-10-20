@@ -7,6 +7,19 @@
 #include <stdbool.h>
 
 /**
+ * nop - does nothing
+ * @stack: double pointer to the stack to be manipulated
+ * @line_number: number of lines in case of an error
+ *
+ * Description: opcode that doesn’t do anything
+ */
+void nop(stack_t **stack, unsigned int line_number)
+{
+    (void)stack;
+    (void)line_number;
+}
+
+/**
  * main - entry point for monty bytecode interpreter
  * @argc: argument count
  * @argv: argument vector
@@ -23,7 +36,7 @@ int main(int argc, char **argv)
     int i;
     size_t a = 0;
     stack_t *stack = NULL;
-    instruction_t instr[] = {{"push", &push}, {"pall", &pall}, {"nop", &nop}, {"pint", &pint}, {"pop", &pop}};
+    instruction_t instr[] = {{"push", &push}, {"pall", &pall}, {"nop", &nop}, {"pint", &pint}, {"pop", &pop}, {"add", &add};
 
     if (argc != 2)
     {
@@ -77,7 +90,7 @@ int main(int argc, char **argv)
                         fprintf(stderr, "L%d: usage: push integer\n", nbr_line);
                         exit(EXIT_FAILURE);
                     }
-                    n = 0;
+                    n = nbr_line;
                 }
 
             }
