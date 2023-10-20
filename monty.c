@@ -60,7 +60,7 @@ int main(int argc, char **argv)
             token = strtok(line, " ");
             while (token != NULL)
             {
-                for (i = 0; i < 3; i++)
+                for (i = 0; i < 6; i++)
                 {
                     if (strcmp(token, instr[i].opcode) == 0)
                     {
@@ -90,7 +90,7 @@ int main(int argc, char **argv)
                         fprintf(stderr, "L%d: usage: push integer\n", nbr_line);
                         exit(EXIT_FAILURE);
                     }
-                    n = 0;
+                    n = nbr_line;
                 }
 
             }
