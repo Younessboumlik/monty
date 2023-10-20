@@ -36,7 +36,7 @@ int main(int argc, char **argv)
     int i;
     size_t a = 0;
     stack_t *stack = NULL;
-    instruction_t instr[] = {{"push", &push}, {"pall", &pall}, {"nop", &nop}, {"pint", &pint}, {"pop", &pop},{"add", &add};
+    instruction_t instr[] = {{"push", &push}, {"pall", &pall}, {"nop", &nop}, {"pint", &pint}, {"pop", &pop},{"add", &add}};
 
     if (argc != 2)
     {
