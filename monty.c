@@ -36,7 +36,7 @@ int main(int argc, char **argv)
     int i;
     size_t a = 0;
     stack_t *stack = NULL;
-    instruction_t instr[] = {{"push", &push}, {"pall", &pall}, {"nop", &nop}, {"pint", &pint}, {"pop", &pop},{"add", &add}};
+    instruction_t instr[] = {{"push", &push}, {"pall", &pall}, {"nop", &nop}, {"pint", &pint}, {"pop", &pop}};
 
     if (argc != 2)
     {
@@ -60,7 +60,7 @@ int main(int argc, char **argv)
             token = strtok(line, " ");
             while (token != NULL)
             {
-                for (i = 0; i < 6; i++)
+                for (i = 0; i < 5; i++)
                 {
                     if (strcmp(token, instr[i].opcode) == 0)
                     {
@@ -90,7 +90,7 @@ int main(int argc, char **argv)
                         fprintf(stderr, "L%d: usage: push integer\n", nbr_line);
                         exit(EXIT_FAILURE);
                     }
-                    n = nbr_line;
+                    n = 0;
                 }
 
             }
